@@ -225,6 +225,12 @@ float Adafruit_BMP085::readAltitude(float sealevelPressure) {
   return altitude;
 }
 
+float Adafruit_BMP085::readSeaLevelPressure(float altitude) {
+  // Opposite to readAltitude, for a known altitude and pressue we
+  // can calculate sea level pressure
+  return readPressure() / (pow(1 - (altitude / 44330), 5.255));
+}
+
 
 /*********************************************************************/
 
